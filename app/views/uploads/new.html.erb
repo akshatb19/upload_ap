@@ -1,0 +1,8 @@
+<h1>Upload</h1>
+
+<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
+	<%= file_field_tag :file  %>
+	<%= submit_tag 'Upload file' %>
+<% end %>
+<p></p>
+<%= link_to 'All Uploads', uploads_path %>

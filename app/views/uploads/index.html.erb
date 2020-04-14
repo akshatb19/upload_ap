@@ -1,0 +1,12 @@
+<h1>All uploads</h1>
+<table>
+  <% @uploads.each do |upload| %>
+	<tr>
+      <td><div><%= link_to upload.name, upload.url %></div></td>
+      <td><%= link_to 'Destroy', upload_path(upload),
+              method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<p></p>
+<%= link_to 'New Upload', new_upload_path %>
