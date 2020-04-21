@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   def create
     # Make an object in your bucket for your upload
     obj = S3_BUCKET.objects[params[:file].original_filename]
-   
+
     # Upload the file
     obj.write(
       file: params[:file],
@@ -35,7 +35,7 @@ class UploadsController < ApplicationController
   def destroy
     @upload = Upload.find(params[:id])
     @upload.destroy
- 
+
     redirect_to uploads_path
   end
 end
