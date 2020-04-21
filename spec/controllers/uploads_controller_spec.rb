@@ -14,15 +14,17 @@ RSpec.describe UploadsController, type: :controller do
     get :new
     expect(response).to render_template :new
   end
-
+  let(:file) { FactoryBot.create(:chargeback_csv) }
   it 'should upload file and redirect to index' do
-    post :create
+    Upload.any_instance.stubs(:valid?).returns(true)
+    post :create, :params =>{:file => file}
     flash[:notice].should be_nil
-    expect(response).to render_template :uploads_path
+    expect(response).to redirect_to('http://test.host/uploads')
   end
 
   it 'should not save and redirect to new' do
-    post :create
+    Upload.any_instance.stubs(:valid?).returns(false)
+    post :create, :params =>{:file => file}
     flash[:notice].should_not be_nil
     expect(response).to render_template :new
   end

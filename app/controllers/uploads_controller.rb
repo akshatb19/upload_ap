@@ -4,8 +4,8 @@ class UploadsController < ApplicationController
 
   def create
     s3 = Aws::S3::Resource.new(region: 'us-east-2')
-    obj = s3.bucket(ENV['S3_BUCKET']).object(params[:file].original_filename)
-    obj.upload_file(params[:file])
+    obj = S3_BUCKET.objects[params[:file].original_filename]
+    obj.write(file: params[:file], acl: :public_read)
     bucketlink = s3.bucket(ENV['S3_BUCKET']).object(obj.key).presigned_url(:get, expires_in: 3600, response_content_disposition: 'attachment')
     @upload = Upload.new(
     		url: obj.public_url,
