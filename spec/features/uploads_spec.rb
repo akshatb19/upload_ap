@@ -25,4 +25,14 @@ RSpec.feature "Uploads", type: :feature do
     expect(page.current_path).to eql(uploads_path)
   end
 
+  scenario "view uploaded file" do
+    visit uploads_path
+    
+  end
+
+  scenario "delete file" do
+    visit uploads_path
+
+  end
+
 end
