@@ -31,6 +31,11 @@ RSpec.describe UploadsController, type: :controller do
     expect(response).to render_template :new
   end
 
+  it 'should delete file' do
+    delete :destroy, :params =>{:id => 63}
+    expect(response).to redirect_to('http://test.host/uploads')
+  end
+
   context 'send email' do
 
     before(:all) do
@@ -50,4 +55,5 @@ RSpec.describe UploadsController, type: :controller do
     end
 
   end
+
 end
