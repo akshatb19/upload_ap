@@ -1,12 +1,12 @@
 include ActionDispatch::TestProcess
 
 FactoryBot.define do
-  factory :chargeback_csv, :class => "Tempfile" do
+  factory :abc_txt, :class => "Tempfile" do
 
     to_create {}
 
-      path      { Rails.root.join("spec/fixtures/chargeback_test.csv") }
-      mime_type { "text/csv" }
+      path      { Rails.root.join("spec/fixtures/abc.txt") }
+      mime_type { "text/plain" }
       binary    { false }
 
     initialize_with { fixture_file_upload(path, mime_type, binary) }

@@ -14,7 +14,9 @@ RSpec.describe UploadsController, type: :controller do
     get :new
     expect(response).to render_template :new
   end
-  let(:file) { FactoryBot.create(:chargeback_csv) }
+
+  let(:file) { FactoryBot.create(:abc_txt) }
+
   it 'should upload file and redirect to index' do
     Upload.any_instance.stubs(:valid?).returns(true)
     post :create, :params =>{:file => file}
@@ -30,6 +32,7 @@ RSpec.describe UploadsController, type: :controller do
   end
 
   context 'send email' do
+
     before(:all) do
       @email = NotifierMailer.new_request("xyz")
     end
