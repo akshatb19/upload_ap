@@ -33,7 +33,7 @@ RSpec.feature "Uploads", type: :feature do
 
   scenario "delete file" do
     visit uploads_path
-    find('a[href$="/uploads/62"]').click
+    find('a',text: "abc.txt").click
     expect(page).to_not have_css('a',text: "abc.txt")
   end
 

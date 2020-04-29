@@ -1,3 +1,107 @@
 // Place all the styles related to the Uploads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background-image: linear-gradient(90deg, #58DCE9, #39B7FE);
+}
+
+tbody {
+  height: 200px;
+  display: inline-block;
+  width: 240%;
+  overflow: auto;
+}
+
+.container {
+  color: #3DBBFF;
+  background-color: white;
+  border-radius: 25px;
+  padding-bottom: 4%;
+  padding-top: 1%;
+  padding-left: 6%;
+  padding-right: 6%;
+  margin: 5.5% 25%;
+}
+
+.container1 {
+  color: #3DBBFF;
+  background-color: white;
+  border-radius: 25px;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  padding-left: 19%;
+  padding-right: 10%;
+  margin: 5.5% 25% 5.5% 25%;
+}
+
+#file {
+  margin-left: 13%;
+}
+.button {
+  background-color: #7ED957;
+  color: white;
+  padding: 1% 5%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.a1 {
+  a:link, a:visited {
+    background-color: #FF914D;
+    color: white;
+    padding: 1% 3%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 32px;
+    position: fixed;
+    left: 42%;
+    bottom: 10%;
+  }
+  a:hover, a:active {
+    background-color: #3DBBFF;
+  }
+}
+
+.a2 {
+  a:link, a:visited {
+    background-color: #5271FF;
+    color: white;
+    padding-left: 8px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+  }
+  a:hover, a:active {
+    background-color: #3DBBFF;
+  }
+}
+
+.a3 {
+  a:link, a:visited {
+    background-color: #5271FF;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    margin-left: 10px;
+  }
+  a:hover, a:active {
+    background-color: #fc2f2f;
+  }
+}
+
+.header {
+  padding: 0;
+  text-align: center;
+}

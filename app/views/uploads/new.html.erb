@@ -1,8 +1,13 @@
-<h1>Upload</h1>
-
-<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
-	<%= file_field_tag :file  %>
-	<%= submit_tag 'Upload file' %>
-<% end %>
-<p></p>
-<%= link_to 'All Uploads', uploads_path %>
+<div class = "header">
+	<h1 style="font-size: 60px; color: #ffffff;">Welcome to Upload Page</h1>
+</div>
+<div class= "container">
+  <h1 style="font-size: 50px; color: #39B7FE;text-align: center">Upload File</h1>
+	<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Upload file', :class => "button" %>
+  <% end %>
+</div>
+<div class = "a1">
+	<%= link_to 'All Uploads', uploads_path %>
+</div>

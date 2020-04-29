@@ -1,12 +1,12 @@
-<h1>All uploads</h1>
-<table>
-  <% @uploads.each do |upload| %>
-	<tr>
-      <td><div><%= link_to upload.name, upload.url %></div></td>
-      <td><%= link_to 'Destroy', upload_path(upload),
-              method: :delete %></td>
+<div class = "header"><h1 style="font-size: 60px; color: white;margin-left: 5%;">All uploads</h1></div>
+<div class = "container1">
+  <table>
+    <% @uploads.each do |upload| %>
+    <tr>
+      <td><div class = "a2"><%= link_to upload.name, upload.url %></div></td>
+      <td><div class = "a3"><%= link_to 'Destroy', upload_path(upload), method: :delete %></div></td>
     </tr>
-  <% end %>
-</table>
-<p></p>
-<%= link_to 'New Upload', new_upload_path %>
+   <% end %>
+  </table>
+</div>
+<div class = "a1"><%= link_to 'New Upload', new_upload_path %></div>
