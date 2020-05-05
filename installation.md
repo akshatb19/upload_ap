@@ -1,5 +1,6 @@
 # Blip Installation
 - [Blip Installation](#blip-installation)
+    - [Prerequisites](#prerequisites)
     - [Installing Node and Yarn](#installing-node-and-yarn)
     - [Installing RVM and Ruby](#installing-rvm-and-ruby)
     - [Setting up git](#setting-up-git)
@@ -12,24 +13,48 @@
     - [Start Server](#start-server)
     - [Try login](#try-login)
 
+## Prerequisites
+
+
+
 ## Installing Node and Yarn
+
+
 
 ## Installing RVM and Ruby
 
+
+
 ## Setting up git
+
+
 
 ## Specifying Node Versions using 'n'
 
+
+
 ## Installing mysql
+
+
 
 ## Installing Redis
 
+
+
 ## Clone the Repository through GitHub
+
+
 
 ## Run Bundle Install and Yarn Install
 
+
+
 ## Setup database
 
+
+
 ## Start Server
+
+
 
 ## Try login
