@@ -7,6 +7,12 @@
     - [Specifying Node Versions using 'n'](#specifying-node-versions-using-'n')
     - [Installing mysql](#installing-mysql)
     - [Installing Redis](#installing-redis)
+        - [Download, Compile and Install Redis](#download-,-compile-and-install-redis)
+        - [Configure Redis](#configure-redis)
+        - [Create a Redis systemd Unit File](#create-a-redis-systemd-unit-file)
+        - [Create the Redis User, Group and Directories](#create-the-redis-user-,-group-and-directories)
+        - [Start and Test Redis](#start-and-test-redis)
+        - [Enable Redis to Start at Boot](#enable-redis-to-start-at-boot)
     - [Clone the Repository through GitHub](#clone-the-repository-through-github)
     - [Configure database](#configure-database)
     - [Start Server](#start-server)
@@ -125,7 +131,7 @@ To make sure that we have all the dependencies, we run the following commands:
     $ sudo apt-get update
     $ sudo apt-get install build-essential tcl
 
-### Download, Compile, and Install Redis
+### Download, Compile and Install Redis
 Next, we can begin to build Redis.
 
 #### Download and Extract the Source Code
@@ -293,7 +299,7 @@ Back out into the shell again when you are finished:
 
     127.0.0.1:6379> exit
 
-#### Enable Redis to Start at Boot
+### Enable Redis to Start at Boot
 
 If all of your tests worked, and you would like to start Redis automatically when your server boots, you can enable the systemd service.
 
