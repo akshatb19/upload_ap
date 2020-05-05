@@ -106,7 +106,188 @@ Finally, install the mysql-server package, which now contains MySQL 5.7.
 You’ll be prompted to create a root password during the installation. Choose 'welcome' as password.
 
 ## Installing Redis
+In order to get the latest version of Redis, we will be compiling and installing the software from source. Before we download the code, we need to satisfy the build dependencies so that we can compile the software.
 
+To do this, we can install the build-essential meta-package from the Ubuntu repositories. We will also be downloading the tcl package, which we can use to test our binaries.
+
+We can update our local apt package cache and install the dependencies by typing:
+
+    $ sudo apt-get update
+    $ sudo apt-get install build-essential tcl
+
+### Download, Compile, and Install Redis
+Next, we can begin to build Redis.
+
+####Download and Extract the Source Code
+Since we won’t need to keep the source code that we’ll compile long term (we can always re-download it), we will build in the /tmp directory. Let’s move there now:
+    $ cd /tmp
+
+Now, download the latest stable version of Redis.
+
+    $ curl -O http://download.redis.io/redis-stable.tar.gz
+
+Unpack the tarball by typing:
+
+    $ tar xzvf redis-stable.tar.gz
+
+Move into the Redis source directory structure that was just extracted:
+
+    $ cd redis-stable
+
+####Build and Install Redis
+Now, we can compile the Redis binaries by typing:
+
+    $ make
+
+After the binaries are compiled, run the test suite to make sure everything was built correctly. You can do this by typing:
+
+    $ make test
+
+This will typically take a few minutes to run. Once it is complete, you can install the binaries onto the system by typing:
+
+    $ sudo make install
+
+###Configure Redis
+Now that Redis is installed, we can begin to configure it.
+
+To start off, we need to create a configuration directory. We will use the conventional /etc/redis directory, which can be created by typing:
+
+    $ sudo mkdir /etc/redis
+
+Now, copy over the sample Redis configuration file included in the Redis source archive:
+
+    $ sudo cp /tmp/redis-stable/redis.conf /etc/redis
+
+Next, we can open the file to adjust a few items in the configuration:
+
+    $ sudo nano /etc/redis/redis.conf
+
+In the file, find the supervised directive. Currently, this is set to no. Since we are running an operating system that uses the systemd init system, we can change this to systemd:
+
+Next, find the dir directory. This option specifies the directory that Redis will use to dump persistent data. We need to pick a location that Redis will have write permission and that isn’t viewable by normal users.
+
+We will use the /var/lib/redis directory for this
+
+Save and close the file when you are finished.
+
+###Create a Redis systemd Unit File
+Next, we can create a systemd unit file so that the init system can manage the Redis process.
+
+Create and open the /etc/systemd/system/redis.service file to get started:
+
+    $ sudo nano /etc/systemd/system/redis.service
+
+Copy the following to the file:
+
+    [Unit]
+    Description=Redis In-Memory Data Store
+    After=network.target
+
+    [Service]
+    User=redis
+    Group=redis
+    ExecStart=/usr/local/bin/redis-server /etc/redis/redis.conf
+    ExecStop=/usr/local/bin/redis-cli shutdown
+    Restart=always
+
+    [Install]
+    WantedBy=multi-user.target
+
+Save and close the file when you are finished.
+
+###Create the Redis User, Group and Directories
+Now, we just have to create the user, group, and directory that we referenced in the previous two files.
+
+Begin by creating the redis user and group. This can be done in a single command by typing:
+
+    $ sudo adduser --system --group --no-create-home redis
+
+Now, we can create the /var/lib/redis directory by typing:
+
+    $ sudo mkdir /var/lib/redis
+
+We should give the redis user and group ownership over this directory:
+
+    $ sudo chown redis:redis /var/lib/redis
+
+Adjust the permissions so that regular users cannot access this location:
+
+    $ sudo chmod 770 /var/lib/redis
+
+###Start and Test Redis
+Now, we are ready to start the Redis server.
+
+####Start the Redis Service
+Start up the systemd service by typing:
+
+    $ sudo systemctl start redis
+
+Check that the service had no errors by running:
+
+    $ sudo systemctl status redis
+
+It should show Active(Running)
+
+####Test the Redis Instance Functionality
+To test that your service is functioning correctly, connect to the Redis server with the command-line client:
+
+    $ redis-cli
+
+In the prompt that follows, test connectivity by typing:
+
+    127.0.0.1:6379> ping
+
+You should see:
+
+    Output
+    PONG
+
+Check that you can set keys by typing:
+
+    127.0.0.1:6379> set test "It's working!"
+    Output
+    OK
+
+Now, retrieve the value by typing:
+
+    127.0.0.1:6379> get test
+
+You should be able to retrieve the value we stored:
+
+    Output
+    "It's working!"
+
+Exit the Redis prompt to get back to the shell:
+
+    127.0.0.1:6379> exit
+
+As a final test, let’s restart the Redis instance:
+
+    $ sudo systemctl restart redis
+
+Now, connect with the client again and confirm that your test value is still available:
+
+    $ redis-cli
+    127.0.0.1:6379> get test
+
+The value of your key should still be accessible:
+
+    Output
+    "It's working!"
+
+Back out into the shell again when you are finished:
+
+    127.0.0.1:6379> exit
+
+Enable Redis to Start at Boot
+
+If all of your tests worked, and you would like to start Redis automatically when your server boots, you can enable the systemd service.
+
+To do so, type:
+
+    $ sudo systemctl enable redis
+    Output
+    Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /etc/systemd/system/redis.service.
 
 ## Clone the Repository through GitHub
 
