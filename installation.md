@@ -83,7 +83,7 @@ Execute n on its own to view your downloaded versions, and install the selected 
     node/8.17.0
     node/12.16.3
 
-  Use up/down arrow keys to select a version, return key to install, d to delete, q to quit
+    Use up/down arrow keys to select a version, return key to install, d to delete, q to quit
 
 If the active node version does not change after install, try opening a new shell in case seeing a stale version.
 
