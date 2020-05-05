@@ -65,10 +65,27 @@ Once you've done this, you can check and see if it worked:
 
 You should get a message like this:
 
-    Hi xyz! You've successfully authenticated, but GitHub does not provide shell access. 
+    Hi xyz! You've successfully authenticated, but GitHub does not provide shell access.
 
 ## Specifying Node Versions using 'n'
+Since you probably already have node, the easiest way to install n is through npm:
 
+    sudo npm install -g n
+
+Simply execute sudo n <version> to download and install a version of node. If <version> has already been downloaded, n will install from its cache.
+
+    sudo n 8.17.0
+
+Execute n on its own to view your downloaded versions, and install the selected version.
+
+    sudo n
+
+    node/8.17.0
+    node/12.16.3
+
+  Use up/down arrow keys to select a version, return key to install, d to delete, q to quit
+
+If the active node version does not change after install, try opening a new shell in case seeing a stale version.
 
 ## Installing mysql
 
