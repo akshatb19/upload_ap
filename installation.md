@@ -78,10 +78,10 @@ Simply execute sudo n <version> to download and install a version of node. If <v
 
 Execute n on its own to view your downloaded versions, and install the selected version.
 
-    sudo n
+    $ sudo n
 
-    node/8.17.0
-    node/12.16.3
+      node/8.17.0
+      node/12.16.3
 
     Use up/down arrow keys to select a version, return key to install, d to delete, q to quit
 
