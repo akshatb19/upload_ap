@@ -8,7 +8,7 @@
     - [Installing mysql](#installing-mysql)
     - [Installing Redis](#installing-redis)
     - [Clone the Repository through GitHub](#clone-the-repository-through-github)
-    - [Setup database](#setup-database)
+    - [Configure database](#configure-database)
     - [Start Server](#start-server)
     - [Try login](#try-login)
 
@@ -323,10 +323,28 @@ After it is successful, run the following command:
 
 And then leave the terminal as it is and open a new terminal in blip folder.
 
-## Setup database
+## Configure database
+Configure database details in config/database.yml. It should show username to be 'root' and password to be 'welcome'  
+After this run the following commands:
 
+    $ rake db:create
+    $ rake db:migrate
+    $ rake db:seek
 
 ## Start Server
+After configuring databases, run the following command to start server:
 
+    $ ./script/rails s
+
+Once it starts, open browser and got to 'localhost:3000'
+It should show Amagi CloudPort frontpage.
 
 ## Try login
+Click on login and enter the following details:
+
+    ID: cloud@amagi.com
+    Password: test123
+
+It should successfully login.
+
+# Installation Complete.
