@@ -88,7 +88,22 @@ Execute n on its own to view your downloaded versions, and install the selected 
 If the active node version does not change after install, try opening a new shell in case seeing a stale version.
 
 ## Installing mysql
-If you want to install MySQL 5.7, you’ll need to add the latest APT package repository from the [MySQL APT repository page](https://dev.mysql.com/downloads/repo/apt/).
+If you want to install MySQL 5.7, you’ll need to add the latest APT package repository from the [MySQL APT repository page](https://dev.mysql.com/downloads/repo/apt/). The below version may be out of date.
+
+    $ wget http://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
+    $ sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
+
+You’ll see a prompt that asks you which MySQL product you want to configure. The MySQL Server option, which is highlighted, should say mysql-5.7. If it doesn’t, press ENTER, then scroll down to mysql-5.7 using the arrow keys, and press ENTER again.
+
+Once the option says mysql-5.7, scroll down on the main menu to Apply and press ENTER again. Now, update your package index.
+
+    $ sudo apt-get update
+
+Finally, install the mysql-server package, which now contains MySQL 5.7.
+
+    $ sudo apt-get install mysql-server
+
+You’ll be prompted to create a root password during the installation. Choose 'welcome' as password.
 
 ## Installing Redis
 
