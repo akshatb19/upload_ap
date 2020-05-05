@@ -88,7 +88,7 @@ Execute n on its own to view your downloaded versions, and install the selected 
 If the active node version does not change after install, try opening a new shell in case seeing a stale version.
 
 ## Installing mysql
-
+If you want to install MySQL 5.7, you’ll need to add the latest APT package repository from the [MySQL APT repository page](#https://dev.mysql.com/downloads/repo/apt/).
 
 ## Installing Redis
 
