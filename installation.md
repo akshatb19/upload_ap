@@ -13,44 +13,53 @@
     - [Try login](#try-login)
 
 ## Prerequisites
-The only prerequisite for installing blip is:
+The only prerequisite for installation of blip is:
 - OS: Ubuntu 16.04 (Xenial Xerus).
 
 ## Installing Node and Yarn
 The first step is to install some dependencies for Ruby and Rails.
 
-To make sure we have everything necessary for Webpacker support in Rails, we're first going to start by adding the Node.js and Yarn repositories to our system before installing them.
+We're first going to start by adding the **Node.js** and **Yarn** repositories to our system before installing them.
 
     $ sudo apt install curl
     $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     $ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+Now installing the Node.js and Yarn.
+
     $ sudo apt-get update
     $ sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn
 
 ## Installing RVM and Ruby
-Now we're going to be installing Ruby using rvm:
+Now we're going to be installing Ruby using **rvm**:
+
+First let us install rvm.
 
     $ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev
     $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
     $ curl -sSL https://get.rvm.io | bash -s stable
     $ source ~/.rvm/scripts/rvm
+
+Now using RVM we will install **ruby version-2.3.0**:
+
     $ rvm install 2.3.0
     $ rvm use 2.3.0 --default
-    $ ruby -v
     $ gem update --system
     $ gem install bundler
+    $ ruby -v
 
 ## Setting up git
 We'll be using Git for our version control system so we're going to set it up to match our Github account.
 
-Replace my name and email address in the following steps with the ones you used for your Github account.
+Replace name and email address in the following steps with the ones used for your Github account.
 
     $ git config --global color.ui true
-    $ git config --global user.name "YOUR NAME"
-    $ git config --global user.email "YOUR@EMAIL.com"
-    $ ssh-keygen -t rsa -b 4096 -C "YOUR@EMAIL.com"
+    $ git config --global user.name "NAME"
+    $ git config --global user.email "EXAMPLE@EMAIL.com"
+    $ ssh-keygen -t rsa -b 4096 -C "EXAMPLE@EMAIL.com"
+
+Press ENTER and set passphrase.
 
 The next step is to take the newly generated SSH key and add it to your Github account.
 
@@ -67,15 +76,17 @@ You should get a message like this:
     Hi xyz! You've successfully authenticated, but GitHub does not provide shell access.
 
 ## Specifying Node Versions using 'n'
-Since you probably already have node, the easiest way to install n is through npm:
+Since we already have node, the easiest way to install n is through npm:
 
     $ sudo npm install -g n
 
-Simply execute sudo n <version> to download and install a version of node. If <version> has already been downloaded, n will install from its cache.
+Simply execute following code to download and install a <version> of node. If <version> has already been downloaded, n will install from its cache.
+
+We require **Node version-8.17.0**
 
     $ sudo n 8.17.0
 
-Execute n on its own to view your downloaded versions, and install the selected version.
+Execute n on its own to view the downloaded versions, and install the selected version.
 
     $ sudo n
 
@@ -87,7 +98,9 @@ Execute n on its own to view your downloaded versions, and install the selected 
 If the active node version does not change after install, try opening a new shell in case seeing a stale version.
 
 ## Installing mysql
-If you want to install MySQL 5.7, you’ll need to add the latest APT package repository from the [MySQL APT repository page](https://dev.mysql.com/downloads/repo/apt/). The below version may be out of date.
+We want to install **MySQL 5.7**. First we need to add the latest APT package repository from the [MySQL APT repository page](https://dev.mysql.com/downloads/repo/apt/).
+
+Note: The below version may be out of date.
 
     $ wget http://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
     $ sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
@@ -105,11 +118,9 @@ Finally, install the mysql-server package, which now contains MySQL 5.7.
 You’ll be prompted to create a root password during the installation. Choose 'welcome' as password.
 
 ## Installing Redis
-In order to get the latest version of Redis, we will be compiling and installing the software from source. Before we download the code, we need to satisfy the build dependencies so that we can compile the software.
+In order to get the latest version of **Redis**, we will be compiling and installing the software from source.
 
-To do this, we can install the build-essential meta-package from the Ubuntu repositories. We will also be downloading the tcl package, which we can use to test our binaries.
-
-We can update our local apt package cache and install the dependencies by typing:
+To make sure that we have all the dependencies, we run the following commands:
 
     $ sudo apt-get update
     $ sudo apt-get install build-essential tcl
@@ -118,7 +129,7 @@ We can update our local apt package cache and install the dependencies by typing
 Next, we can begin to build Redis.
 
 #### Download and Extract the Source Code
-Since we won’t need to keep the source code that we’ll compile long term (we can always re-download it), we will build in the /tmp directory. Let’s move there now:
+Since we won’t need to keep the source code that we’ll compile long term (we can always re-download it), we will build in the /tmp directory:
     $ cd /tmp
 
 Now, download the latest stable version of Redis.
@@ -138,18 +149,18 @@ Now, we can compile the Redis binaries by typing:
 
     $ make
 
-After the binaries are compiled, run the test suite to make sure everything was built correctly. You can do this by typing:
+After the binaries are compiled, run the test suite to make sure everything was built correctly by typing:
 
     $ make test
 
-This will typically take a few minutes to run. Once it is complete, you can install the binaries onto the system by typing:
+Once it is complete, we can install the binaries onto the system by typing:
 
     $ sudo make install
 
 ### Configure Redis
 Now that Redis is installed, we can begin to configure it.
 
-To start off, we need to create a configuration directory. We will use the conventional /etc/redis directory, which can be created by typing:
+We need to create a configuration directory. We will use the conventional /etc/redis directory, which can be created by typing:
 
     $ sudo mkdir /etc/redis
 
@@ -161,18 +172,22 @@ Next, we can open the file to adjust a few items in the configuration:
 
     $ sudo nano /etc/redis/redis.conf
 
-In the file, find the supervised directive. Currently, this is set to no. Since we are running an operating system that uses the systemd init system, we can change this to systemd:
+In the file, find the **supervised** directive. Currently, this is set to **no**. Since we are running an operating system that uses the systemd init system, we can change this to **systemd**
 
-Next, find the dir directory. This option specifies the directory that Redis will use to dump persistent data. We need to pick a location that Redis will have write permission and that isn’t viewable by normal users.
+Note: Replace 'no' with 'systemd'.
 
-We will use the /var/lib/redis directory for this
+Next, find the **dir** directory. This option specifies the directory that Redis will use to dump persistent data. We need to pick a location that Redis will have write permission and that isn’t viewable by normal users.
+
+We will use the **/var/lib/redis** directory for this.
+
+Note: Replace './' with '/var/lib/redis'
 
 Save and close the file when you are finished.
 
 ### Create a Redis systemd Unit File
 Next, we can create a systemd unit file so that the init system can manage the Redis process.
 
-Create and open the /etc/systemd/system/redis.service file to get started:
+Create and open the /etc/systemd/system/redis.service file:
 
     $ sudo nano /etc/systemd/system/redis.service
 
@@ -195,7 +210,7 @@ Copy the following to the file:
 Save and close the file when you are finished.
 
 ### Create the Redis User, Group and Directories
-Now, we just have to create the user, group, and directory that we referenced in the previous two files.
+Now, we have to create the user, group, and directory that we referenced in the previous two files.
 
 Begin by creating the redis user and group. This can be done in a single command by typing:
 
@@ -325,6 +340,7 @@ And then leave the terminal as it is and open a new terminal in blip folder.
 
 ## Configure database
 Configure database details in config/database.yml. It should show username to be 'root' and password to be 'welcome'  
+
 After this run the following commands:
 
     $ rake db:create
