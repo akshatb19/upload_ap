@@ -14,47 +14,36 @@
     - [Try login](#try-login)
 
 ## Prerequisites
-
-
+The only prerequisite for setting up blip is having OS: Ubuntu 16.04 (Xenial Xerus). 
 
 ## Installing Node and Yarn
-
 
 
 ## Installing RVM and Ruby
 
 
-
 ## Setting up git
-
 
 
 ## Specifying Node Versions using 'n'
 
 
-
 ## Installing mysql
-
 
 
 ## Installing Redis
 
 
-
 ## Clone the Repository through GitHub
-
 
 
 ## Run Bundle Install and Yarn Install
 
 
-
 ## Setup database
 
 
-
 ## Start Server
-
 
 
 ## Try login
