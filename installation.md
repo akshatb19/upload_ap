@@ -118,7 +118,7 @@ We can update our local apt package cache and install the dependencies by typing
 ### Download, Compile, and Install Redis
 Next, we can begin to build Redis.
 
-####Download and Extract the Source Code
+#### Download and Extract the Source Code
 Since we won’t need to keep the source code that we’ll compile long term (we can always re-download it), we will build in the /tmp directory. Let’s move there now:
     $ cd /tmp
 
@@ -134,7 +134,7 @@ Move into the Redis source directory structure that was just extracted:
 
     $ cd redis-stable
 
-####Build and Install Redis
+#### Build and Install Redis
 Now, we can compile the Redis binaries by typing:
 
     $ make
@@ -147,7 +147,7 @@ This will typically take a few minutes to run. Once it is complete, you can inst
 
     $ sudo make install
 
-###Configure Redis
+### Configure Redis
 Now that Redis is installed, we can begin to configure it.
 
 To start off, we need to create a configuration directory. We will use the conventional /etc/redis directory, which can be created by typing:
@@ -170,7 +170,7 @@ We will use the /var/lib/redis directory for this
 
 Save and close the file when you are finished.
 
-###Create a Redis systemd Unit File
+### Create a Redis systemd Unit File
 Next, we can create a systemd unit file so that the init system can manage the Redis process.
 
 Create and open the /etc/systemd/system/redis.service file to get started:
@@ -195,7 +195,7 @@ Copy the following to the file:
 
 Save and close the file when you are finished.
 
-###Create the Redis User, Group and Directories
+### Create the Redis User, Group and Directories
 Now, we just have to create the user, group, and directory that we referenced in the previous two files.
 
 Begin by creating the redis user and group. This can be done in a single command by typing:
@@ -214,10 +214,10 @@ Adjust the permissions so that regular users cannot access this location:
 
     $ sudo chmod 770 /var/lib/redis
 
-###Start and Test Redis
+### Start and Test Redis
 Now, we are ready to start the Redis server.
 
-####Start the Redis Service
+#### Start the Redis Service
 Start up the systemd service by typing:
 
     $ sudo systemctl start redis
@@ -228,7 +228,7 @@ Check that the service had no errors by running:
 
 It should show Active(Running)
 
-####Test the Redis Instance Functionality
+#### Test the Redis Instance Functionality
 To test that your service is functioning correctly, connect to the Redis server with the command-line client:
 
     $ redis-cli
@@ -279,7 +279,7 @@ Back out into the shell again when you are finished:
 
     127.0.0.1:6379> exit
 
-Enable Redis to Start at Boot
+#### Enable Redis to Start at Boot
 
 If all of your tests worked, and you would like to start Redis automatically when your server boots, you can enable the systemd service.
 
