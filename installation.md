@@ -8,7 +8,6 @@
     - [Installing mysql](#installing-mysql)
     - [Installing Redis](#installing-redis)
     - [Clone the Repository through GitHub](#clone-the-repository-through-github)
-    - [Run Bundle Install and Yarn Install](#run-bundle-install-and-yarn-install)
     - [Setup database](#setup-database)
     - [Start Server](#start-server)
     - [Try login](#try-login)
@@ -290,10 +289,39 @@ To do so, type:
     Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /etc/systemd/system/redis.service.
 
 ## Clone the Repository through GitHub
+Move to home directory:
 
+    $ cd
 
-## Run Bundle Install and Yarn Install
+To clone blip repository from GitHub, visit https://github.com/amagimedia/blip
 
+Click on 'Clone or Download'.
+
+Click on 'Use SSH' and copy the given link.
+
+Open terminal in home directory and type the following command:
+
+    $ git clone git@github.com:amagimedia/blip.git
+
+The repository will be downloaded.
+
+Now move to the blip folder:
+
+    $ cd blip
+
+After this we need to run 'bundle install' to install all the dependencies:
+
+    $ bundle install
+
+To install all the frontend dependencies run the following commands:
+
+    $ yarn install
+
+After it is successful, run the following command:
+
+    $ yarn run build-hot
+
+And then leave the terminal as it is and open a new terminal in blip folder.
 
 ## Setup database
 
