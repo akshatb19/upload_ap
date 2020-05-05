@@ -1,4 +1,5 @@
 # Blip Installation
+- [Blip Installation](#blip-installation)
     - [Installing Node and Yarn](#installing-node-and-yarn)
     - [Installing RVM and Ruby](#installing-rvm-and-ruby)
     - [Setting up git](#setting-up-git)
