@@ -14,7 +14,8 @@
     - [Try login](#try-login)
 
 ## Prerequisites
-The only prerequisite for setting up blip is having OS: Ubuntu 16.04 (Xenial Xerus). 
+The only prerequisite for installing blip is:
+- OS: Ubuntu 16.04 (Xenial Xerus). 
 
 ## Installing Node and Yarn
 
