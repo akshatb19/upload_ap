@@ -12,9 +12,4 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
-      - run: bundle exec rspec --profile --order=random
-      - store_artifacts:
-          path: ~/simplecov
-      - store_test_results:
-          path: ~/simplecov
       - ruby/bundle-install
