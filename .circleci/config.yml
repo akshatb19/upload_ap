@@ -10,7 +10,7 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+      - run: bundle check || bundle install
       - run:
           name: test
           command: bundle exec rspec
