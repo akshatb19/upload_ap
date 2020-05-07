@@ -12,6 +12,7 @@ jobs:
       - checkout
       - run: bundle check || bundle install
       - run: yarn install --check-files
+      - run: rails db:migrate RAILS_ENV=development
       - run:
           name: test
           command: bundle exec rspec
