@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
@@ -15,5 +15,5 @@ jobs:
       - run: rails db:create db:migrate db:schema:load --trace RAILS_ENV=development
       - run:
           name: test
-          command: bundle exec rspec
+          command: bundle exec rspec --exclude-pattern "spec/features/**/*.rb"
       - ruby/bundle-install
