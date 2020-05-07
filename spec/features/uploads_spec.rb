@@ -19,7 +19,7 @@ RSpec.feature "Uploads", type: :feature do
 
   scenario "Upload file successfully" do
     visit new_upload_path
-    find("#file", :visible => false).click
+    find("#file").click
     attach_file("file", Rails.root + 'spec/fixtures/abc.txt')
     find("input[type = 'submit']").click
     expect(page.current_path).to eql(uploads_path)
