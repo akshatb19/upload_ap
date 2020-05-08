@@ -3,7 +3,7 @@ orbs:
   ruby: circleci/ruby@0.1.2
 
 jobs:
-  tests:
+  build:
     working_directory: ~/upload_app
     docker:
       - image: circleci/ruby:2.6.6-stretch-node
