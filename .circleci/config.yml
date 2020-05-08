@@ -3,7 +3,7 @@ orbs:
   ruby: circleci/ruby@0.1.2
 
 jobs:
-  build:
+  tests:
     working_directory: ~/upload_app
     docker:
       - image: circleci/ruby:2.6.6-stretch-node
@@ -16,4 +16,3 @@ jobs:
       - run:
           name: test
           command: bundle exec rspec --exclude-pattern "spec/features/**/*.rb"
-      - ruby/bundle-install
