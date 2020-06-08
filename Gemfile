@@ -11,6 +11,9 @@ gem 'aws-sdk'
 gem 'aws-sdk-v1'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
+gem "activesupport", ">= 6.0.3.1"
+gem "actionpack", ">= 6.0.3.1"
+gem "activestorage", ">= 6.0.3.1"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
